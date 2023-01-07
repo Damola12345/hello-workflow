@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-workflow
+  # namespace: waficash-temporal
+spec:
+  selector:
+    matchLabels:
+      app: hello-workflow
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-workflow
+    spec:
+      containers:
+      - name: hello-workflow-worker
+        image: damola12345/hello-workflow-worker:latest
+
+      - name: hello-workflow-starter
+        image: damola12345/hello-workflow-starter:latest
