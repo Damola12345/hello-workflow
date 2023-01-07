@@ -50,7 +50,7 @@ resource "aws_eks_node_group" "private-nodes" {
 
   capacity_type        = "ON_DEMAND"
   instance_types       = ["t3.small"]
-  disk_size            = 100    # prod use 100
+  disk_size            = 100   # prod use 100
   force_update_version = false # if existing pods are unable to be drained due to pod disruption budget issue
 
   # AMI associated with EKS Node Group
