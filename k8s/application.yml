@@ -5,7 +5,8 @@ metadata:
   namespace: argocd
 spec:
   project: default
-
+  
+  # Add github repo
   source:
     repoURL: https://github.com/Damola12345/hello-workflow.git
     targetRevision: HEAD
