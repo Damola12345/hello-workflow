@@ -9,7 +9,9 @@ import (
 )
 
 func main() {
-	c, err := client.NewClient(client.Options{})
+	c, err := client.NewClient(client.Options{
+		HostPort: "temporal-frontend:7233",
+		})
 	if err != nil {
 		log.Fatalln("Unable to make client", err)
 	}
@@ -32,4 +34,14 @@ func main() {
 		log.Fatalln("Unable to get workflow result", err)
 	}
 	log.Println("workflow result:", result)
+	done := make(chan bool)
+	<- done
 }
+
+// func main() {
+//  // all previous codes
+// // wait forever
+// done := make(chan bool)
+// <- done
+
+// }
