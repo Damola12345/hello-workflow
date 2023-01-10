@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
 
   push:
-    branches: [ ft/wafi_cash ]
+    branches: [ master ]
   # pull_request:
     # branches: [ main ]
     # tags:
@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push
+      - name: Build and push worker
         uses: docker/build-push-action@v3
         with:
           context: .
@@ -35,7 +35,7 @@ jobs:
           push: true
           tags: damola12345/hello-workflow-worker:latest
 
-      - name: Build and push
+      - name: Build and push starter
         uses: docker/build-push-action@v3
         with:
           context: .
