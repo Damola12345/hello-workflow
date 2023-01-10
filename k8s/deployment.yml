@@ -14,12 +14,15 @@ spec:
         app: hello-workflow
     spec:
       containers:
+
+      # worker container
       - name: hello-workflow-worker
         image: damola12345/hello-workflow-worker:latest
         env:
         - name: TEMPORAL_ADDRESS
           value: temporal-frontend:7233
 
+      # starter container
       - name: hello-workflow-starter
         image: damola12345/hello-workflow-starter:latest
         env:
