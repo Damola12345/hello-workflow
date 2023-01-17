@@ -14,17 +14,18 @@ spec:
         app: hello-workflow
     spec:
       containers:
-
       # worker container
       - name: hello-workflow-worker
-        image: damola12345/hello-workflow-worker:latest
+        image: 431419854259.dkr.ecr.us-east-1.amazonaws.com/hello-workflow-worker:latest
+        imagePullPolicy: Always
         env:
         - name: TEMPORAL_ADDRESS
           value: temporal-frontend:7233
 
       # starter container
       - name: hello-workflow-starter
-        image: damola12345/hello-workflow-starter:latest
+        image: 431419854259.dkr.ecr.us-east-1.amazonaws.com/hello-workflow-starter:latest
+        imagePullPolicy: Always
         env:
         - name: TEMPORAL_ADDRESS
           value: temporal-frontend:7233
