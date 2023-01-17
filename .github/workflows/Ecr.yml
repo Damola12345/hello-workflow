@@ -46,9 +46,6 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: update-kubeconfig
-      run: aws eks --region us-east-1 update-kubeconfig --name Eks
-
 
     - name: deploy to cluster
       uses: kodermax/kubectl-aws-eks@master
