@@ -2,7 +2,7 @@
 name: Build and Push Go to AWS ECR
 on:
   push:
-    branches: [ ft/wafi_cash ]
+    branches: [ master ]
 jobs:
   build-and-push:
     name: Build and Push to ECR
@@ -34,7 +34,6 @@ jobs:
       run: |
         docker build -f Dockerfile.worker -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
     - name: Build, Tag, and Push the Image to Amazon ECR
       env:
@@ -44,19 +43,8 @@ jobs:
       run: |
         docker build -f Dockerfile.starter -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
-
-    # - name: deploy to cluster
-    #   uses: kodermax/kubectl-aws-eks@master
-    #   env:
-    #     KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-    #   with:
-    #     args: |
-    #       create -f k8s/deployment.yml
             
-
-    - name: deploy to cluster
+    - name: Deploy to EKS cluster
       uses: cancue/eks-action@v0.0.2
       env:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -68,3 +56,10 @@ jobs:
         args: |
           kubectl create -f k8s/deployment.yml
 
+    - name: Notify slack success
+      uses: craftech-io/slack-action@v1
+      with:
+        slack_webhook_url: ${{ secrets.SLACK_NOTIFY }}
+        slack_channel: pipeline-ci-cd
+        status: ${{ job.status }}
+      if: always()
