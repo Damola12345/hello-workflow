@@ -46,8 +46,8 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: deploy to cluster
-      run: aws eks --region us-east-1 update-kubeconfig --name Eks --profile terraform-user
+    - name: update-kubeconfig
+      run: aws eks --region us-east-1 update-kubeconfig --name Eks
 
 
     - name: deploy to cluster
