@@ -16,7 +16,7 @@ spec:
       containers:
       # worker container
       - name: hello-workflow-worker
-        image: 431419854259.dkr.ecr.us-east-1.amazonaws.com/hello-workflow-worker:latest
+        image: xxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/hello-workflow-worker:latest
         imagePullPolicy: Always
         env:
         - name: TEMPORAL_ADDRESS
@@ -24,7 +24,7 @@ spec:
 
       # starter container
       - name: hello-workflow-starter
-        image: 431419854259.dkr.ecr.us-east-1.amazonaws.com/hello-workflow-starter:latest
+        image: xxxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/hello-workflow-starter:latest
         imagePullPolicy: Always
         env:
         - name: TEMPORAL_ADDRESS
