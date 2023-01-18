@@ -6,4 +6,4 @@ projects:
   dir: eks-tf
   workflow: myworkflow
   autoplan:
-    enable: true
+    enabled: true
