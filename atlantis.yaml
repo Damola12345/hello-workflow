@@ -5,5 +5,5 @@ projects:
 - name: myworkflow
   dir: eks-tf
   workflow: myworkflow
-  autplan:
+  autoplan:
     enable: true
