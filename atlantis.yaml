@@ -4,6 +4,5 @@ projects:
 # a 'name' key to differentiate them.
 - name: myworkflow
   dir: eks-tf
-  workflow: myworkflow
   autoplan:
     enabled: true
