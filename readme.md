@@ -43,5 +43,5 @@ Please note that the temporal server needs to be up before the above commands wo
 
 
 
-See you soon 👋🏻👋🏻👋🏻👋🏻.
+See you soon 👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻.
 
